@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Flame, Menu, X } from 'lucide-react';
 import { navItems } from '@/lib/content';
 
 export function Navbar() {
@@ -11,8 +11,16 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-cream/95 backdrop-blur">
       <div className="section-container flex h-20 items-center justify-between">
-        <Link href="#inicio" className="text-xl font-semibold tracking-wide" style={{ fontFamily: 'var(--font-serif)' }}>
-          SUTE Cocina
+        <Link
+          href="#inicio"
+          className="flex items-center gap-3 text-xl font-semibold tracking-wide"
+          style={{ fontFamily: 'var(--font-serif)' }}
+        >
+          <span className="sute-logo-icon" aria-hidden="true">
+            <span className="sute-logo-fire-glow" />
+            <Flame className="sute-logo-fire" size={20} strokeWidth={2.2} />
+          </span>
+          <span>SUTE Cocina</span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Navegación principal">
