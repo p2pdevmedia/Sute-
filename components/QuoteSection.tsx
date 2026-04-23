@@ -53,7 +53,7 @@ export function QuoteSection() {
             servicio de email.
           </p>
           <a
-            href="https://wa.me/5491112345678"
+            href="https://wa.me/5492972531170"
             target="_blank"
             rel="noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white"

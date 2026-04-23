@@ -11,7 +11,7 @@ export function FinalCtaSection() {
               Solicitar cotización
             </a>
             <a
-              href="https://wa.me/5491112345678"
+              href="https://wa.me/5492972531170"
               target="_blank"
               rel="noreferrer"
               className="rounded-full border border-cream/40 px-6 py-3 text-sm font-semibold text-cream"
