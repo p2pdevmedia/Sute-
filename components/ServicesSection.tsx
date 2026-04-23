@@ -2,6 +2,16 @@ import Image from 'next/image';
 import { services } from '@/lib/content';
 
 export function ServicesSection() {
+  const whatsappNumber = '5492972531170';
+
+  const getConsultationUrl = (title: string, description: string) => {
+    const message = encodeURIComponent(
+      `Hola! Quiero consultar por ${title}.\n\nDescripción del servicio:\n${description}`
+    );
+
+    return `https://wa.me/${whatsappNumber}?text=${message}`;
+  };
+
   return (
     <section id="servicios" className="bg-white/60 py-20">
       <div className="section-container">
@@ -28,12 +38,14 @@ export function ServicesSection() {
                     <li key={point}>{point}</li>
                   ))}
                 </ul>
-                <button
-                  type="button"
+                <a
+                  href={getConsultationUrl(service.title, service.description)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="rounded-full border border-espresso/20 px-4 py-2 text-sm font-semibold transition hover:border-espresso/50 hover:bg-sand/40"
                 >
                   Consultar
-                </button>
+                </a>
               </div>
             </article>
           ))}
