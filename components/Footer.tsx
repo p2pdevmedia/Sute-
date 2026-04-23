@@ -29,8 +29,12 @@ export function Footer() {
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-espresso/60">Contacto</h3>
           <ul className="mt-3 space-y-2 text-sm text-espresso/80">
-            <li>Tel/WhatsApp: +54 9 2972 53-1170</li>
-            <li>Email: hola@sutecocina.com (placeholder)</li>
+            <li>
+              Tel/WhatsApp:{' '}
+              <a href="https://wa.me/5492972531170" target="_blank" rel="noreferrer" className="underline">
+                +54 9 2972 53-1170
+              </a>
+            </li>
             <li>
               Instagram:{' '}
               <a href="https://www.instagram.com/sute_cocina/" target="_blank" rel="noreferrer" className="underline">
