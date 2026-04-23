@@ -60,6 +60,16 @@ npm run start
 5. Output: automático para Next.js.
 6. Deploy.
 
+
+## Solución rápida para error `404: NOT_FOUND` en Vercel
+
+Si `https://sute.vercel.app` devuelve `404: NOT_FOUND`, normalmente no es un error de React/Next en runtime, sino de configuración/alias del deploy.
+
+1. En **Vercel → Project → Settings → Domains**, verificá que `sute.vercel.app` esté asignado a este proyecto.
+2. En **Deployments**, promové el último deploy exitoso a **Production**.
+3. Confirmá que el proyecto use **Framework Preset: Next.js** (este repo ahora incluye `vercel.json` para forzarlo).
+4. Si sigue en 404, remové y volvé a agregar el dominio `sute.vercel.app` para regenerar el alias.
+
 ## Reemplazo de imágenes placeholder
 
 Actualmente el sitio usa imágenes placeholder en:
