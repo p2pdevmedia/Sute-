@@ -26,6 +26,25 @@ const initialState: FormValues = {
 export function QuoteSection() {
   const [values, setValues] = useState<FormValues>(initialState);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const whatsappNumber = '5492972531170';
+
+  const createWhatsAppMessage = (formValues: FormValues) => {
+    const lines = [
+      '¡Hola! Quiero solicitar información para mi evento.',
+      '',
+      `Nombre: ${formValues.nombre}`,
+      `Email: ${formValues.email}`,
+      `Teléfono: ${formValues.telefono.trim() || 'No indicado'}`,
+      `Tipo de evento: ${formValues.tipoEvento}`,
+      `Cantidad de invitados: ${formValues.invitados}`,
+      `Fecha estimada: ${formValues.fecha}`,
+      '',
+      'Mensaje:',
+      formValues.mensaje
+    ];
+
+    return encodeURIComponent(lines.join('\n'));
+  };
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -37,6 +56,10 @@ export function QuoteSection() {
       return;
     }
 
+    const message = createWhatsAppMessage(values);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     setStatus('success');
     setValues(initialState);
   };
@@ -53,7 +76,7 @@ export function QuoteSection() {
             servicio de email.
           </p>
           <a
-            href="https://wa.me/5492972531170"
+            href={`https://wa.me/${whatsappNumber}`}
             target="_blank"
             rel="noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white"
@@ -72,10 +95,12 @@ export function QuoteSection() {
           <textarea className="min-h-28 rounded-xl border border-black/10 bg-white px-4 py-3 text-sm" placeholder="Mensaje" value={values.mensaje} onChange={(e)=>setValues({...values,mensaje:e.target.value})} />
 
           <button type="submit" className="rounded-full bg-espresso px-5 py-3 text-sm font-semibold text-cream transition hover:bg-espresso/90">
-            Enviar solicitud
+            Solicitar información por WhatsApp
           </button>
 
-          {status === 'success' && <p className="text-sm font-medium text-olive">¡Gracias! Recibimos tu consulta (demo).</p>}
+          {status === 'success' && (
+            <p className="text-sm font-medium text-olive">¡Listo! Abrimos WhatsApp con tu mensaje precargado.</p>
+          )}
           {status === 'error' && <p className="text-sm font-medium text-red-700">Completá los campos obligatorios con datos válidos.</p>}
         </form>
       </div>
